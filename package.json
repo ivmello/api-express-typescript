@@ -40,7 +40,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node build/src/server.js",
-    "start:dev": "ts-node-dev src/server.ts",
+    "start:dev": "ts-node-dev --transpileOnly --ignore-watch node_modules src/server.ts",
     "db:migrate:make": "knex migrate:make",
     "db:migrate": "knex --knexfile knexfile.ts migrate:latest ",
     "db:seed:make": "knex --knexfile knexfile.ts seed:make",
