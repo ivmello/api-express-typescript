@@ -11,7 +11,10 @@ module.exports = {
     database: process.env.DATABASE_NAME,
   },
   migrations: {
-    directory: path.resolve(__dirname, "src", "migrations"),
+    directory: path.resolve(__dirname, "src", "database", "migrations"),
+  },
+  seeds: {
+    directory: path.resolve(__dirname, "src", "database", "seeds"),
   },
   useNullAsDefault: true,
 };
