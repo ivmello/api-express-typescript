@@ -15,13 +15,8 @@ class App {
 
     this.app = express();
 
-    this.initDatabase();
     this.initMiddlewares();
     this.initRoutes();
-  }
-
-  initDatabase(): void {
-    //
   }
 
   initMiddlewares(): void {
