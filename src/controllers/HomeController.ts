@@ -1,10 +1,11 @@
 import { Response, Request } from "express";
+import db from "../database";
 
 class HomeController {
   async index(req: Request, res: Response): Promise<Response> {
-    return res.json({
-      data: "teste",
-    });
+    const results = await db("users").select("*");
+
+    return res.json(results);
   }
 }
 
