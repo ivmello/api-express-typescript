@@ -1,4 +1,6 @@
+import path from "path";
 import express from "express";
+import morgan from "morgan";
 import bodyParser from "body-parser";
 import helmet from "helmet";
 import cors from "cors";
@@ -26,10 +28,15 @@ class App {
     this.app.use(bodyParser.json());
     this.app.use(helmet());
     this.app.use(cors());
+    this.app.use(morgan("combined"));
   }
 
   initRoutes(): void {
     this.app.use("/", routes);
+    this.app.use(
+      "/uploads",
+      express.static(path.resolve(__dirname, "..", "uploads"))
+    );
   }
 
   listen(): void {
