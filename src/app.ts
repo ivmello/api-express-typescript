@@ -6,7 +6,8 @@ import helmet from "helmet";
 import cors from "cors";
 import * as dotenv from "dotenv";
 import routes from "./routes";
-
+import swaggerUi from "swagger-ui-express";
+import * as swaggerDocument from "../swagger.json";
 class App {
   private app: express.Application;
 
@@ -32,6 +33,7 @@ class App {
       "/uploads",
       express.static(path.resolve(__dirname, "..", "uploads"))
     );
+    this.app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
   }
 
   listen(): void {
