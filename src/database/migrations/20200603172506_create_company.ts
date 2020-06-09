@@ -8,6 +8,7 @@ export async function up(knex: Knex): Promise<unknown> {
     table.foreign("user_id").references("id").inTable("users");
 
     table.string("name").notNullable();
+    table.string("image").notNullable();
     table.string("description");
     table.boolean("status").notNullable().defaultTo(true);
     table.boolean("deleted").notNullable().defaultTo(false);

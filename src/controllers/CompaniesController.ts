@@ -30,6 +30,7 @@ class CompaniesController {
     const result = await db("companies").insert({
       user_id,
       name,
+      image: req.file.filename,
       description,
     });
 
