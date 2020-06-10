@@ -5,9 +5,8 @@ import bodyParser from "body-parser";
 import helmet from "helmet";
 import cors from "cors";
 import * as dotenv from "dotenv";
+import { errors } from "celebrate";
 import routes from "./routes";
-import swaggerUi from "swagger-ui-express";
-import * as swaggerDocument from "../swagger.json";
 class App {
   private app: express.Application;
 
@@ -18,6 +17,9 @@ class App {
 
     this.initMiddlewares();
     this.initRoutes();
+
+    // precisa ser necessariamente depois das rotas para validar os erros de campos corretamente
+    this.app.use(errors());
   }
 
   initMiddlewares(): void {
@@ -33,7 +35,6 @@ class App {
       "/uploads",
       express.static(path.resolve(__dirname, "..", "uploads"))
     );
-    this.app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
   }
 
   listen(): void {
