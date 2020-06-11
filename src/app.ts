@@ -4,15 +4,12 @@ import morgan from "morgan";
 import bodyParser from "body-parser";
 import helmet from "helmet";
 import cors from "cors";
-import * as dotenv from "dotenv";
 import { errors } from "celebrate";
 import routes from "./routes";
 class App {
-  private app: express.Application;
+  public app: express.Application;
 
   constructor() {
-    dotenv.config();
-
     this.app = express();
 
     this.initMiddlewares();
@@ -37,13 +34,13 @@ class App {
     );
   }
 
-  listen(): void {
-    const PORT: string | number = process.env.PORT || 4000;
+  // listen(): void {
+  //   const PORT: string | number = process.env.PORT || 4000;
 
-    this.app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-    });
-  }
+  //   this.app.listen(PORT, () => {
+  //     console.log(`Server running on port ${PORT}`);
+  //   });
+  // }
 }
 
-export default new App();
+export default new App().app;

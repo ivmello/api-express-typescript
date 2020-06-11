@@ -3,9 +3,9 @@ import db from "../database";
 
 class HomeController {
   async index(req: Request, res: Response): Promise<Response> {
-    const results = await db("users").select("*");
-
-    return res.json(results);
+    return res.json({
+      data: "Bem-vindo a API Shapeweb Catálogo",
+    });
   }
 }
 
